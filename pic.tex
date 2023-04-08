@@ -1,0 +1,42 @@
+\documentclass{article}
+\documentclass[letterpaper]{preview} 
+\usepackage[pdftex,active,tightpage]{preview}
+\usepackage{tikz}
+\usepackage{tikz-network}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{subfigure}
+\setlength\PreviewBorder{0mm} 
+
+
+\begin{document}
+
+\begin{preview}
+\centering
+\begin{tikzpicture}[scale=0.45]
+    \begin{axis}[
+        legend pos = north east,
+        xlabel=Training Steps(k),
+        ylabel=Loss,
+        xmin=4,
+        legend cell align={left},
+        label style={font=\LARGE},
+        ticklabel style = {font=\Large},
+        legend style = {font=\small},
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=solid,
+    ]
+    \addplot[mark=none, color=green, line width=0.5pt, ] table {figure/data/selfsup/ema_loss.dat};
+    \addlegendentry{LoFTR}
+    \addplot[mark=none, color=blue, line width=0.5pt, ] table {figure/data/selfsup/debug_loss.dat};
+    \addlegendentry{Quadtree Attention}
+    \addplot[mark=none, color=red, line width=0.5pt, ] table {figure/data/selfsup/selfsup_loss.dat};
+    \addlegendentry{{\bf Ours}}
+    \end{axis}
+\end{tikzpicture}
+\end{preview}
+
+\end{document}
+
+\surd 
